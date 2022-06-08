@@ -1,0 +1,63 @@
+<html>
+<head> 
+    <title>Hasil Pengisian KRS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+        <div class="container">
+                <h2>Hasil Pengisian KRS</h2>
+                <p>Data yang dikirim adalah:</p>
+                <p>
+                NPM : {{ npm }} <br/>
+                Nama : {{ nama }} <br/>
+                Prodi :
+                {% if prodi==1 %} 
+                        Sistem Informasi
+                {% elif prodi==2 %} 
+                        Informatika
+                {% elif prodi==3 %} 
+                        Teknologi Informasi
+                {% else %} 
+                        Teknik Industri
+                {% endif %} 
+                <br/>
+                IPK : {{ ipk }} <br/>
+                SKS : {{ sks }} <br/>
+                
+                {% if "ipk==3.25" and "ipk <= 4.00" %}
+                        Untuk {{ ipk }} Anda bisa Mengambil 24 sks.
+            
+                {% elif "ipk==3.00" and "ipk <= 3.24" %} 
+                        Untuk IPK {{ ipk }} Anda bisa Mengambil 22 SKS saja.
+            
+                {% elif "ipk==2.50" and "ipk <= 2.90" %} 
+                        Untuk IPK {{ ipk }} Anda bisa Mengambil 18 SKS saja.
+            
+                {% else %} 
+                        Untuk IPK {{ ipk }} Anda harus Menghubungi Dosen Pembimbing.
+                {% endif %}
+                </p>
+                <table border="1">
+                  <tr>
+                      <td>No</td>
+                      <td>NPM</td>
+                      <td>Nama</td>
+                      <td>Prodi</td>
+                      <td>Ipk</td>
+                  </tr>
+                  {% for baris in container %}
+                  <tr>
+                      <td>{{ baris[0] }}</td>
+                      <td>{{ baris[1] }}</td>
+                      <td>{{ baris[2] }}</td>
+                      <td>{{ baris[3] }}</td>
+                      <td>{{ baris[4] }}</td>
+                  </tr>
+                  {% endfor %}
+              </table>
+
+        </div>
+   
+</body>
+</html>

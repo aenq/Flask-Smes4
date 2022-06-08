@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>UNJANI YOGYA KRS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>UNJANI YOGYA KRS</h1>
+        <h4>Nama : Rachel Marta Maria <br> NPM : 202103015</h4>
+    {% macro showerror(field) -%} 
+        {% if errors %} 
+            {% for t in errors %} 
+                {% if field in t[0] %} 
+                    <span style="color:red; font-size:12px">
+                        {{ t[1][0] }}
+                    </span>
+                {% endif %} 
+            {% endfor %} 
+        {% endif %} 
+    {% endmacro %} 
+
+    <form method="post">
+        {# baris di bawah ini wajib disertakan #} 
+        {# agar form.validate() dapat bernilai True #} 
+        {{ form.csrf_token }} 
+
+        {{ form.npm.label }} <br/>
+        {{ form.npm() }} {{ showerror('npm') }} <br/>
+        {{ form.nama.label }} <br/>
+        {{ form.nama() }} {{ showerror('nama') }} <br/>
+        {{ form.prodi.label }} <br/>
+        {{ form.prodi() }} {{ showerror('prodi') }} <br/>
+        {{ form.ipk.label }} <br/>
+        {{ form.ipk() }} {{ showerror('ipk') }} <br/>
+        {{ form.sks.label }} <br/>
+        {{ form.sks() }} {{ showerror('sks') }} <br/>
+
+        <p> {{ form.submit() }}</p>
+    </form>
+
+    </div>
+    
+</body>
+</html>

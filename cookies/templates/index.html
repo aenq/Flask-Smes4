@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Contoh Cookie</title>
+    </head>
+
+    <body>
+        <h2>Contoh Cookie</h2>
+        <p style="color: red;"> {{ msg}} </p>
+        <p> Aksi :
+            <a href="{{ url_for('ubahCookie') }}"> Ubah Cookie</a>
+            <a href="{{ url_for('hapusCookie') }}"> Hapus Cookie</a>
+        </p>
+
+        <p>Untuk melihat cookie, gunakan link dibawah ini.</p>
+        <p> Aksi :
+            <a href="{{ url_for('halaman1') }}"> Halaman 1</a>
+            <a href="{{ url_for('halaman2') }}"> Halaman 2</a>
+            
+        </p>
+
+    </body>
+</html>
